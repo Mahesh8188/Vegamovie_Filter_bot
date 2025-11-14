@@ -774,6 +774,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
         file_id = query.data.split('#', 1)[1]
+
+        if IS_PREMIUM_STREAM:
+            if not await db.has_premium_access(query.from_user.id):
+                await query.answer(
+                    "⚠️ ᴘʀᴇᴍɪᴜᴍ ᴄᴏɴᴛᴇɴᴛ ❗\n🔓 ᴜɴʟᴏᴄᴋ ɪᴛ ʙʏ ᴜᴘɢʀᴀᴅɪɴɢ ᴛᴏ ᴘʀᴇᴍɪᴜᴍ",
+                    show_alert=True
+                )
+                await query.message.reply_text(
+                    "🔒 ᴛʜɪs ꜰᴇᴀᴛᴜʀᴇ ɪs ᴏɴʟʏ ꜰᴏʀ 🏅 ᴘʀᴇᴍɪᴜᴍ ᴜsᴇʀs\n\n"
+                    "✨ ᴜɴʟᴏᴄᴋ ᴇxᴄʟᴜsɪᴠᴇ ᴄᴏɴᴛᴇɴᴛ ᴀɴᴅ ꜰᴇᴀᴛᴜʀᴇs\n"
+                    "💳 ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ ᴛᴏ ɢᴇᴛ sᴛᴀʀᴛᴇᴅ"
+                )
+                return
+		
         log_msg = await client.send_cached_media(
         chat_id=LOG_CHANNEL,
         file_id=file_id
