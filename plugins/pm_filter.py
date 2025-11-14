@@ -775,7 +775,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         user_id = query.from_user.id
         file_id = query.data.split('#', 1)[1]
 
-        if IS_PREMIUM_STREAM:
+        if STREAM_MODE:
             if not await db.has_premium_access(query.from_user.id):
                 await query.answer(
                     "⚠️ ᴘʀᴇᴍɪᴜᴍ ᴄᴏɴᴛᴇɴᴛ ❗\n🔓 ᴜɴʟᴏᴄᴋ ɪᴛ ʙʏ ᴜᴘɢʀᴀᴅɪɴɢ ᴛᴏ ᴘʀᴇᴍɪᴜᴍ",
