@@ -121,7 +121,7 @@ async def plan(client, message):
     ]]
     await message.reply_photo(
         photo=(QR_CODE),
-        caption=script.PREMIUM_TEXT, 
+        caption=script.FREE_TXT, 
         reply_markup=InlineKeyboardMarkup(btn))
     await client.send_message(LOG_CHANNEL, log_message)
 
