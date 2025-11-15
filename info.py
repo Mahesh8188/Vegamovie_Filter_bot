@@ -26,16 +26,10 @@ CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHAN
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 DATABASE_URI = environ.get('DATABASE_URI', "")
+FILES_DATABASE_URL = environ.get('FILES_DATABASE_URL', "") # For Files
+SECOND_FILES_DATABASE_URL = environ.get('SECOND_FILES_DATABASE_URL', "") # 2nd DB For Files
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'lazyfilesx')
-
-MULTIPLE_DATABASE = bool(environ.get('MULTIPLE_DATABASE', True)) # Set True or False
-
-# If Multiple Database Is True Then Fill All Three Below Database Uri Else You Will Get Error.
-F_DB_URI = environ.get('F_DB_URI', "")   # This Db Is For File Data Store
-S_DB_URI = environ.get('S_DB_URI', "")   # This Db is for File Data Store When First Db Is Going To Be Full.
-
-
 
 #---------------------------------------------------------------
 #---------------------------------------------------------------
@@ -175,15 +169,4 @@ cmds = [
     {"grp_cmds": "Check Group Commands"},
     {"admin_cmds": "Bot Admin Commands"}
 ]
-
-
-if MULTIPLE_DATABASE == False:
-    USER_DB_URI = DATABASE_URI
-    FILE_DB_URI = DATABASE_URI
-    SEC_FILE_DB_URI = DATABASE_URI
-else:
-    USER_DB_URI = DATABASE_URI    # This Db is for User Data Store
-    FILE_DB_URI = F_DB_URI        # This Db Is For File Data Store
-    SEC_FILE_DB_URI = S_DB_URI    # This Db is for File Data Store When First Db Is Going To Be Full.
-
 
