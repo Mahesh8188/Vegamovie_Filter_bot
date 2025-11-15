@@ -2,7 +2,7 @@ import re, pytz, random, string, hashlib
 from datetime import datetime, timedelta
 from asyncio import sleep 
 import datetime, time
-from info import ADMINS, LOG_CHANNEL, QR_CODE 
+from info import ADMINS, LOG_CHANNEL, PAYPICS 
 from Script import script 
 from utils import get_seconds, get_status, temp
 from database.users_chats_db import db 
