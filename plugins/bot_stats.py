@@ -5,7 +5,6 @@ from pyrogram.errors import ChatAdminRequired, ChatWriteForbidden
 from info import ADMINS, LOG_CHANNEL, USERNAME
 from database.users_chats_db import db
 from database.ia_filterdb import Media, get_files_db_size
-from utils import get_size, temp, clear_junk, junk_group
 from Script import script
 from datetime import datetime, timedelta
 import psutil
