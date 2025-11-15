@@ -5,6 +5,7 @@ from info import *
 
 client = AsyncIOMotorClient(DATABASE_URI)
 mydb = client[DATABASE_NAME]
+fsubs = client['fsubs']
 
 class Database:
     default = SETTINGS.copy()
@@ -388,3 +389,4 @@ class Database:
             )
 
 db = Database()
+
