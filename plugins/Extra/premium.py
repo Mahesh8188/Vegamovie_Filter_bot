@@ -106,25 +106,20 @@ async def check_plan(client, message):
         response = "ᴜsᴇʀ ʜᴀᴠᴇ ɴᴏᴛ ᴀ ᴘʀᴇᴍɪᴜᴍ..."
     await message.reply_text(response)
 
-@Client.on_message(filters.command('plan') & filters.incoming)
+@Client.on_message(filters.command("plan"))
 async def plan(client, message):
-    user_id = message.from_user.id
-    if message.from_user.username:
+    user_id = message.from_user.id 
+    users = message.from_user.mention
+	if message.from_user.username:
         user_info = f"@{message.from_user.username}"
     else:
         user_info = f"{message.from_user.mention}"
     log_message = f"<b><u>🚫 ᴛʜɪs ᴜsᴇʀs ᴛʀʏ ᴛᴏ ᴄʜᴇᴄᴋ /plan</u> {temp.B_LINK}\n\n- ɪᴅ - `{user_id}`\n- ɴᴀᴍᴇ - {user_info}</b>"
     btn = [[
-	
-        InlineKeyboardButton("🍁 SEND YOUR PAYMENT RECEIPT HERE 🍁", url=f'https://t.me/Mahesh8182')],
-        [InlineKeyboardButton("🗑 ᴄʟᴏsᴇ / ᴅᴇʟᴇᴛᴇ 🗑", callback_data="close_data")
+ 
+        InlineKeyboardButton("🍁 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 🍁", callback_data='free')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
     ]]
-    await message.reply_photo(
-        photo=(QR_CODE),
-        caption=script.FREE_TXT, 
-        reply_markup=InlineKeyboardMarkup(btn))
-    await client.send_message(LOG_CHANNEL, log_message)
-
+    await message.reply_photo(photo="https://graph.org/file/55a5392f88ec5a4bd3379.jpg", caption=script.PREPLANS_TXT.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
 @Client.on_message(filters.command("premium_user") & filters.user(ADMINS))
 async def premium_user(client, message):
     aa = await message.reply_text("Fetching ...")  
