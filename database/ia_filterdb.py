@@ -117,10 +117,6 @@ async def get_search_results(query, max_results=MAX_BTN, offset=0, lang=None):
         regex = re.compile(raw_pattern, flags=re.IGNORECASE)
     except:
         regex = query
-
-    if USE_CAPTION_FILTER:
-        filter = {'$or': [{'file_name': regex}, {'caption': regex}]}
-    else:
         filter = {'file_name': regex}
 
     cursor = collection.find(filter)
