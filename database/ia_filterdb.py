@@ -51,7 +51,7 @@ def get_secondary_db_storage():
     stats = second_db.command("dbStats")
     return stats.get('storageSize', 0)
 
-instance = Instance.from_db(mydb)
+instance = Instance.from_db(db)
 
 @instance.register
 class Media(Document):
