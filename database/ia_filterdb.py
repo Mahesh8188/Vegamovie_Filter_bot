@@ -172,6 +172,27 @@ async def delete_files(query):
     
     return total_deleted
 
+async def get_bad_files(query, file_type=None, offset=0, filter=False):
+    query = query.strip()
+    if not query:
+        raw_pattern = '.'
+    elif ' ' not in query:
+        raw_pattern = r'(\b|[\.\+\-_])' + query + r'(\b|[\.\+\-_])'
+    else:
+        raw_pattern = query.replace(' ', r'.*[\s\.\+\-_]')
+    try:
+        regex = re.compile(raw_pattern, flags=re.IGNORECASE)
+    except:
+        return []
+    filter = {'file_name': regex}
+    if file_type:
+        filter['file_type'] = file_type
+    total_results = await Media.count_documents(filter)
+    cursor = Media.find(filter)
+    cursor.sort('$natural', -1)
+    files = await cursor.to_list(length=total_results)
+    return files, total_results
+
 async def get_file_details(query):
     file_details = collection.find_one({'_id': query})
     if not file_details and SECOND_FILES_DATABASE_URL:
