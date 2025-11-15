@@ -124,17 +124,27 @@ async def groups_list(bot, message):
         await message.reply_document('chats.txt', caption="<b>List of all groups</b>")
 
 @Client.on_message(filters.command('stats') & filters.user(ADMINS) & filters.incoming)
-async def get_ststs(bot, message):
+async def get_stats(bot, message):
     users = await db.total_users_count()
     groups = await db.total_chat_count()
+    premium = await db.all_premium_users()
     size = get_size(await db.get_db_size())
     free = get_size(536870912)
-    files = await Media.count_documents()
-    db2_size = get_size(await get_files_db_size())
-    db2_free = get_size(536870912)
-    uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(time.time() - time.time()))
-    ram = psutil.virtual_memory().percent
-    cpu = psutil.cpu_percent()
-    await message.reply_text(script.STATUS_TXT.format(users, groups, size, free, files, db2_size, db2_free, uptime, ram, cpu))
+    files_primary = db_count_documents()
+    files_secondary = 0
+    if is_second_db_configured():
+        files_secondary = second_db_count_documents()
+    storage_used_1 = get_size(get_primary_db_storage()) 
+    storage_used_2 = "0 B"
+    storage_total_2 = "0 B"
+    if is_second_db_configured():
+        storage_used_2 = get_size(get_secondary_db_storage())  
+        storage_total_2 = get_size(536870912) 
+    uptime_seconds = int(time.time() - start_time)
+    uptime = time.strftime("%Hh %Mm %Ss", time.gmtime(uptime_seconds))
+    ram_percent = psutil.virtual_memory().percent
+    cpu_percent = psutil.cpu_percent()
+    await message.reply_text(
+        script.STATUS_TXT.format(users, groups, premium, size, free, files_primary, storage_used_1, free, files_secondary, storage_used_2, storage_total_2, uptime, ram_percent, cpu_percent))  
 
 
