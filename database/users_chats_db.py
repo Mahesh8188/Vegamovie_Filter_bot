@@ -21,16 +21,16 @@ class Database:
         self.grp_and_ids = fsubs.grp_and_ids
         self.movies_update_channel = mydb.movies_update_channel
         self.botcol = mydb.botcol
-    def new_user(self, id, name):
-        return dict(
+    def new_user(self, id: int, name: str) -> dict:
+        return {
             id = id,
             name = name,
             point = 0,
-            ban_status=dict(
+            ban_status= {
                 is_banned=False,
                 ban_reason=""
-            )
-        )
+        }
+        }
 
     async def get_settings(self, id):
         chat = await self.grp.find_one({'id':int(id)})
@@ -424,4 +424,5 @@ class Database:
         await self.grp.update_one({'id': int(id)}, {'$set': {'settings': self.default}})
 
 db = Database()
+
 
