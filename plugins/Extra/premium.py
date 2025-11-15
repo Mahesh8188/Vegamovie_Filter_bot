@@ -110,11 +110,6 @@ async def check_plan(client, message):
 async def plan(client, message):
     user_id = message.from_user.id 
     users = message.from_user.mention
-	if message.from_user.username:
-        user_info = f"@{message.from_user.username}"
-    else:
-        user_info = f"{message.from_user.mention}"
-    log_message = f"<b><u>🚫 ᴛʜɪs ᴜsᴇʀs ᴛʀʏ ᴛᴏ ᴄʜᴇᴄᴋ /plan</u> {temp.B_LINK}\n\n- ɪᴅ - `{user_id}`\n- ɴᴀᴍᴇ - {user_info}</b>"
     btn = [[
  
         InlineKeyboardButton("🍁 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 🍁", callback_data='free')],[InlineKeyboardButton("❌ ᴄʟᴏꜱᴇ ❌", callback_data="close_data")
