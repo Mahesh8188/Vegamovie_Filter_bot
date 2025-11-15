@@ -22,31 +22,7 @@ class Database:
         self.movie_updates = mydb.movie_updates
         self.connection = mydb.connections
 
-        self.default = {
-            'spell_check': SPELL_CHECK,
-            'auto_filter': AUTO_FILTER,
-            'file_secure': PROTECT_CONTENT,
-            'auto_delete': AUTO_DELETE,
-            'template': IMDB_TEMPLATE,
-            'caption': FILE_CAPTION,
-            'tutorial': TUTORIAL,
-            'tutorial_two': TUTORIAL2,
-            'tutorial_three': TUTORIAL3,
-            'shortner': SHORTENER_WEBSITE,
-            'api': SHORTENER_API,
-            'shortner_two': SHORTENER_WEBSITE2,
-            'api_two': SHORTENER_API2,
-            'log': LOG_VR_CHANNEL,
-            'imdb': IMDB,
-            'link': LINK_MODE, 
-            'is_verify': IS_VERIFY, 
-            'verify_time': TWO_VERIFY_GAP,
-            'shortner_three': SHORTENER_WEBSITE3,
-            'api_three': SHORTENER_API3,
-            'third_verify_time': THREE_VERIFY_GAP,
-            'fsub': AUTH_CHANNELS,
-        }
-
+       
     async def add_name(self, filename):
         if await self.movie_updates.find_one({'_id': filename}):
             return False
@@ -414,3 +390,4 @@ class Database:
             )
 
 db = Database()
+
