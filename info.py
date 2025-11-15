@@ -36,13 +36,19 @@ F_DB_URI = environ.get('F_DB_URI', "")   # This Db Is For File Data Store
 S_DB_URI = environ.get('S_DB_URI', "")   # This Db is for File Data Store When First Db Is Going To Be Full.
 
 
+# Force Subscribe Settings 
+
+auth_req_channels = environ.get("AUTH_REQ_CHANNELS", "-1003180553398")# requst to join Channel for force sub (make sure bot is admin) only for bot ADMINS  
+auth_channels = environ.get("AUTH_CHANNELS", "-1002437541681")# Channels for force sub (make sure bot is admin)
+AUTH_REQ_CHANNELS = [int(ch) for ch in auth_req_channels.split() if ch and id_pattern.match(ch)] 
+AUTH_CHANNELS = [int(ch) for ch in auth_channels.split() if ch and id_pattern.match(ch)]
+
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 #----------- There will be channel id add in all these ---------
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002084819782'))  # set shortner log channel
 DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','-1002084819782')) # The movie you upload in it will be deleted from the bot.
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002084819782'))
-auth_channel = environ.get('AUTH_CHANNEL', '-1003180553398')
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002263224485'))
 request_channel = environ.get('REQUEST_CHANNEL', '-1002208017487') # If anyone sends a request message to your bot, you will get it in this channel.
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1002437541681')) # 
@@ -72,7 +78,7 @@ SEASONS = [f'season {i}'for i in range (1 , 23)]
 REF_PREMIUM = 10
 PREMIUM_POINT = 100
 #---------------------------------------------------------------
-AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
+
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
 #---------------------------------------------------------------
 #---------------------------------------------------------------
