@@ -21,7 +21,7 @@ class Database:
         self.grp_and_ids = fsubs.grp_and_ids
         self.movies_update_channel = mydb.movies_update_channel
         self.botcol = mydb.botcol
-    def new_user(self, id: int, name: str) -> dict:
+    def new_user(self, id, name) -> dict:
         return {
             id = id,
             name = name,
@@ -424,5 +424,6 @@ class Database:
         await self.grp.update_one({'id': int(id)}, {'$set': {'settings': self.default}})
 
 db = Database()
+
 
 
