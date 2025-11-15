@@ -6,12 +6,14 @@ from pyrogram.file_id import FileId
 from pymongo import MongoClient, TEXT
 from umongo import Instance, Document, fields
 from pymongo.errors import DuplicateKeyError, OperationFailure
+from motor.motor_asyncio import AsyncIOMotorClient
+from marshmallow.exceptions import ValidationError
 from info import USE_CAPTION_FILTER, FILES_DATABASE_URL, SECOND_FILES_DATABASE_URL, DATABASE_NAME, COLLECTION_NAME, MAX_BTN
 
 
 logger = logging.getLogger(__name__)
 
-client = MongoClient(FILES_DATABASE_URL)
+client = AsyncIOMotorClient(FILES_DATABASE_URL)
 db = client[DATABASE_NAME]
 collection = db[COLLECTION_NAME]
 second_collection = None  
@@ -27,7 +29,7 @@ except OperationFailure as e:
         logger.exception(e)
 
 if SECOND_FILES_DATABASE_URL:
-    second_client = MongoClient(SECOND_FILES_DATABASE_URL)
+    second_client = AsyncIOMotorClient(SECOND_FILES_DATABASE_URL)
     second_db = second_client[DATABASE_NAME]
     second_collection = second_db[COLLECTION_NAME]
     second_collection.create_index([("file_name", TEXT)])
