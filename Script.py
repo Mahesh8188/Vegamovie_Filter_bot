@@ -70,13 +70,19 @@ BOT WORKING PROPERLY 🔥"""
 Bʏ @akimax06</b>"""
         
     
-    STATUS_TXT = """<b><u>🗃 ᴅᴀᴛᴀʙᴀsᴇ 1 🗃</u>
+    STATUS_TXT = """<b><u>🗃ᴜsᴇʀs ᴅᴀᴛᴀʙᴀsᴇ 🗃</u>
 
 » ᴛᴏᴛᴀʟ ᴜsᴇʀs - <code>{}</code>
 » ᴛᴏᴛᴀʟ ɢʀᴏᴜᴘs - <code>{}</code>
+» ᴘʀᴇᴍɪᴜᴍ ᴜsᴇʀs - <code>{}</code>
 » ᴜsᴇᴅ sᴛᴏʀᴀɢᴇ - <code>{} / {}</code>
 
-<u>🗳 ᴅᴀᴛᴀʙᴀsᴇ 2 🗳</u></b>
+<u>📤 ꜰɪʟᴇs ᴅᴀᴛᴀʙᴀsᴇ 𝟷 📤</u>
+
+» ᴛᴏᴛᴀʟ ꜰɪʟᴇs - <code>{}</code>
+» ᴜsᴇᴅ sᴛᴏʀᴀɢᴇ - <code>{} / {}</code>
+
+<u>📥 ꜰɪʟᴇs ᴅᴀᴛᴀʙᴀsᴇ 𝟸 📥</u>
 
 » ᴛᴏᴛᴀʟ ꜰɪʟᴇs - <code>{}</code>
 » ᴜsᴇᴅ sᴛᴏʀᴀɢᴇ - <code>{} / {}</code>
@@ -86,7 +92,6 @@ Bʏ @akimax06</b>"""
 » ᴜᴘᴛɪᴍᴇ - <code>{}</code>
 » ʀᴀᴍ - <code>{}%</code>
 » ᴄᴘᴜ - <code>{}%</code></b>"""
-
     NEW_USER_TXT = """<b>#New_User {}
 
 ≈ ɪᴅ:- <code>{}</code>
@@ -387,6 +392,7 @@ developer : Mr.Mahesh
 ʙʏ /details ᴄᴏᴍᴍᴀɴᴅ
 </blockquote>
 Iғ ʏᴏᴜ ʜᴀᴠᴇ ᴀɴʏ ᴅᴏᴜʙᴛs ᴘʟᴇᴀsᴇ <a href="https://t.me/Mahesh8182">ᴄᴏɴᴛᴀᴄᴛ</a> ᴍʏ <a href="https://t.me/Mahesh8182">ᴀᴅᴍɪɴ</a></b>"""
+
 
 
 
